@@ -60,7 +60,7 @@ public final class JooqTransfer implements Transfer {
             )
             .values(
                 id,
-                OffsetDateTime.now(),
+                LocalDateTime.now(),
                 debtor.id(),
                 creditor.id(),
                 amount,

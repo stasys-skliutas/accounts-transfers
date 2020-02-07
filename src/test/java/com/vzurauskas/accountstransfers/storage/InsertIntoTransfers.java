@@ -41,7 +41,7 @@ public final class InsertIntoTransfers implements Statement {
                 DSL.field(DSL.name("TRANSFER", "IDEMPOTENCY_KEY"), SQLDataType.VARCHAR)
             ).values(
                 UUID.fromString(bindings[0].toString()),
-                Timestamp.valueOf(bindings[1].toString().split("\\+")[0]),
+                Timestamp.valueOf(bindings[1].toString()),
                 UUID.fromString(bindings[2].toString()),
                 UUID.fromString(bindings[3].toString()),
                 new BigDecimal(bindings[4].toString()),
