@@ -1,0 +1,14 @@
+image: openjdk:8-alpine
+
+stages:
+  - build
+
+Build project:
+  stage: build
+
+  script:
+    - chmod +x mvnw
+    - ./mvnw clean package
+  artifacts:
+    paths:
+      - target/
