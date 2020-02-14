@@ -1,0 +1,21 @@
+version: '2.4'
+services:
+  accountstransfer:
+    build: .
+    restart: always
+    links:
+      - database
+    depends_on:
+      - database
+    ports:
+      - "8091:8080"
+
+  database:
+    image: "mysql:8.0.19"
+    environment:
+      MYSQL_DATABASE: "accountstransfers"
+      MYSQL_USER: "mysql"
+      MYSQL_PASSWORD: "mysql"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+    ports:
+      - "3306:3306"

@@ -16,14 +16,14 @@ public final class Database {
     }
 
     public DSLContext connect() throws SQLException {
-        DSLContext context = DSL.using(dataSource.getConnection(), SQLDialect.H2);
+        DSLContext context = DSL.using(dataSource.getConnection(), SQLDialect.MYSQL);
         initTables(context);
         return context;
     }
 
     private static void initTables(DSLContext context) {
         context.createTableIfNotExists("ACCOUNT")
-            .column("ID", SQLDataType.UUID)
+            .column("ID", SQLDataType.UUID.nullable(false))
             .column("IBAN", SQLDataType.VARCHAR.length(34).nullable(false))
             .column("CURRENCY", SQLDataType.VARCHAR.length(8).nullable(false))
             .constraints(
@@ -31,7 +31,7 @@ public final class Database {
             )
             .execute();
         context.createTableIfNotExists("TRANSFER")
-            .column("ID", SQLDataType.UUID)
+            .column("ID", SQLDataType.UUID.nullable(false))
             .column("TIMESTAMP", SQLDataType.TIMESTAMP.nullable(false))
             .column("DEBTOR", SQLDataType.UUID.nullable(false))
             .column("CREDITOR", SQLDataType.UUID.nullable(false))

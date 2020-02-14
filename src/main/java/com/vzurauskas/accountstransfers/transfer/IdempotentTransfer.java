@@ -24,7 +24,6 @@ public final class IdempotentTransfer implements Transfer {
         } catch (DataAccessException e) {
             log.debug("Idempotency violation.", e);
         }
-
     }
 
     @Override
