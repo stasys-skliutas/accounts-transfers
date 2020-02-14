@@ -1,4 +1,5 @@
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/vzurauskas/accounts-transfers/blob/master/LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Pipeline Status](https://gitlab.com/stasys/accounts-transfers/badges/refactor/pipeline.svg)](https://gitlab.com/stasys/accounts-transfers/pipelines)
 
 # Accounts and Transfers
 Demo object oriented web application: create accounts and transfer money between them via a RESTful API.
