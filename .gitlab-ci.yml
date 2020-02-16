@@ -1,0 +1,23 @@
+stages:
+  - build
+Build project:
+  image: docker/compose
+  stage: build
+  variables:
+    ACCOUNTSTRANSFERS_APP_URL: http://docker:8091/
+  services:
+    - docker:dind
+  before_script:
+    - apk add openjdk8
+  script:
+    - chmod +x mvnw
+    - ./mvnw clean package -DskipTests
+    - docker-compose up -d
+    - sleep 60
+    - cd ./acceptance
+    - chmod +x gradlew
+    - ./gradlew clean test
+  artifacts:
+    when: on_failure
+    paths:
+      - ./acceptance/build
